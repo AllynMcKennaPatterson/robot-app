@@ -26,6 +26,18 @@ function SliderControlModal(props) {
     // await globalCtx.publishAction(action);
   }
 
+  async function actionHandler(){
+    const action = {
+      servo1: val1,
+      servo2: val2,
+      servo3: val3,
+      servo4: val4,
+      servo5: val5,
+    };
+    console.log("Action:" + JSON.stringify(action));
+    // await globalCtx.publishAction(action);
+  }
+
   return (
     <div className={classes.modalContainer}>
       <div className={classes.header}>
@@ -100,8 +112,8 @@ function SliderControlModal(props) {
       </div>
       </div>
       
-      <div className={classes.buttonContainer}>
-        <div className={classes.buttonContent} onClick={actionHandler}>
+      <div className={classes.buttonContainer} onClick={actionHandler}>
+        <div className={classes.buttonContent}>
           <h3 className={classes.buttonText}>Publish</h3>
         </div>
       </div>
