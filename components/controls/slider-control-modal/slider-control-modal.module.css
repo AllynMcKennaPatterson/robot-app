@@ -9,8 +9,8 @@
     justify-content: flex-start;
     align-items: center;
     position: absolute;
-    top: 500px;
-    right: 150px;
+    top: 400px;
+    right: 140px;
     animation: 0.2s ease-in-out 0s 1 slideInFromRight;
 }
 
@@ -96,6 +96,7 @@
     border-radius: 50px;
     background-color: #0095e6;
     box-shadow: 0px 2px 2px -1px rgba(0, 0, 0, 0.1), 0px 4px 10px -1px rgba(0, 0, 0, 0.05), 0px -1px 4px 0px rgba(0, 0, 0, 0.05) inset;
+    cursor: pointer;
 }
 
 .buttonContent{
@@ -122,7 +123,7 @@
     }
     100% {
       transform: translateX(0%);
-      /* transform: scale(1); */
+      transform: scale(1);
     }
   }
 
