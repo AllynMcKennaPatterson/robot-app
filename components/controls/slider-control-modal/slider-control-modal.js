@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import classes from "./slider-control-modal.module.css";
 import "rc-slider/assets/index.css";
+import GlobalContext from '../../../pages/Store/globalContext';
+
 
 function SliderControlModal(props) {
   if (!props.open) return null;
@@ -10,6 +12,19 @@ function SliderControlModal(props) {
   const [val3, setVal3] = useState(90);
   const [val4, setVal4] = useState(90);
   const [val5, setVal5] = useState(90);
+  // const globalCtx = useContext(GlobalContext);
+
+  async function actionHandler(){
+    const action = {
+      servo1: val1,
+      servo2: val2,
+      servo3: val3,
+      servo4: val4,
+      servo5: val5,
+    };
+    console.log("Action:" + JSON.stringify(action));
+    // await globalCtx.publishAction(action);
+  }
 
   return (
     <div className={classes.modalContainer}>
@@ -86,7 +101,7 @@ function SliderControlModal(props) {
       </div>
       
       <div className={classes.buttonContainer}>
-        <div className={classes.buttonContent}>
+        <div className={classes.buttonContent} onClick={actionHandler}>
           <h3 className={classes.buttonText}>Publish</h3>
         </div>
       </div>
