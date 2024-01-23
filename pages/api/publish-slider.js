@@ -1,12 +1,11 @@
 
 async function handler(req, res) {
-  console.log("Publish Data to Ubidots");
-  const response = await fetch("https://industrial.api.ubidots.com/api/v1.6/devices/robot/", {
+  console.log("Publish Data to Ubidots: " + JSON.stringify(req.body));
+  const response = await fetch("http://localhost:8080/publish-slider", {
     method: "POST",
     body: JSON.stringify(req.body),
     headers: {
-      "Content-Type": "application/json",
-      "X-Auth-Token": "BBUS-R9TZ8sPj4ctPgpHE6HEOCIsvAwixSx"
+      "Content-Type": "application/json"
     },
   });
   const data = await response.json();
