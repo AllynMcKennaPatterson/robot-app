@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 import { Montserrat, Roboto } from "@next/font/google";
-import GlobalContextProvider from "./Store/globalContext";
+import { GlobalContextProvider } from "./Store/globalContext";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -9,10 +9,10 @@ const montserrat = Montserrat({
 
 export default function App({ Component, pageProps }) {
   return (
-     <main className={montserrat.className}>
-       {/* <GlobalContextProvider> */}
+    <GlobalContextProvider>
+      <main className={montserrat.className}>
         <Component {...pageProps} />
-       {/* </GlobalContextProvider> */}
-     </main> 
+      </main>
+    </GlobalContextProvider>
   );
 }
