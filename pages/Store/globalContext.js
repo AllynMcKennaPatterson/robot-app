@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext } from "react";
 
 const GlobalContext = createContext({
   // loggedIn: false
@@ -7,8 +7,7 @@ const GlobalContext = createContext({
 export function GlobalContextProvider(props) {
   // const [globals, setGlobals] = useState(defaultGlobals);
 
-  async function publishActionHandler(action) {
-    console.log("We got this far: " + JSON.stringify(action));
+  async function publishAnglesHandler(action) {
     const response = await fetch("/api/publish-slider", {
       method: "POST",
       body: JSON.stringify(action),
@@ -16,13 +15,25 @@ export function GlobalContextProvider(props) {
         "Content-Type": "application/json",
       },
     });
-    console.log("We got here 2")
+    const data = await response.json();
+    console.log(data);
+  }
+
+  async function publishCoordsHandler(action) {
+    const response = await fetch("/api/publish-coordinates", {
+      method: "POST",
+      body: JSON.stringify(action),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     const data = await response.json();
     console.log(data);
   }
 
   const context = {
-    publishAction: publishActionHandler,
+    publishAngles: publishAnglesHandler,
+    publishCoords: publishCoordsHandler,
     // theGlobalObject: globals,
   };
 
