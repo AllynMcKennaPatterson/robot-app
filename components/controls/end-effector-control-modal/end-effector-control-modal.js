@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import classes from "./end-effector-control-modal.module.css";
-import "rc-slider/assets/index.css";
 import GlobalContext from '../../../pages/Store/globalContext';
 /*
   TODO: I will probably need to save val1, val2, and v3 in context
