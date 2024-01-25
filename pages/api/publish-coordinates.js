@@ -1,0 +1,17 @@
+
+async function handler(req, res) {
+  console.log("Publishing Data to Ubidots: " + JSON.stringify(req.body));
+  const response = await fetch("http://localhost:8080/publish-coordinates", {
+    method: "POST",
+    body: JSON.stringify(req.body),
+    headers: {
+      "Content-Type": "application/json"
+    },
+  });
+  const data = await response.json();
+  console.log(JSON.stringify(data))
+  res.json(data);
+
+}
+
+export default handler;
