@@ -23,7 +23,7 @@ function SliderControlModal(props) {
       servo5: val5,
     };
     console.log("Action:" + JSON.stringify(action));
-    await globalCtx.publishAction(action);
+    await globalCtx.publishAngles(action);
   }
 
   return (
