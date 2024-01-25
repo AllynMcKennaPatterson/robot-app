@@ -1,7 +1,7 @@
 .modalContainer{
     background-color: #fff;
     width: 295px;
-    /* height: 405px; */
+    /* height: px; */
     border-radius: 10px;
     box-shadow: 0px 2px 2px -1px rgba(0, 0, 0, 0.1), 0px 4px 10px -1px rgba(0, 0, 0, 0.05), 0px -1px 4px 0px rgba(0, 0, 0, 0.05) inset;
     display: flex;
@@ -9,7 +9,7 @@
     justify-content: flex-start;
     align-items: center;
     position: absolute;
-    top: 400px;
+    top: 500px;
     right: 140px;
     animation: 0.2s ease-in-out 0s 1 slideInFromRight;
 }
@@ -139,4 +139,26 @@
   .value{
     margin: 0px 10px;
     width: 50px;
+    text-align: center;
+    font-size: 18px;
+  }
+
+  .triangleLeft{
+      width: 0;  
+      height: 0;  
+      border-top: 25px solid transparent; 
+      border-bottom: 25px solid transparent; 
+      border-right: 30px solid #0095e6; 
+      border-radius: 5px;
+      margin: 0px 30px 0px 0px;
+  }
+
+  .triangleRight{
+      width: 0;  
+      height: 0;  
+      border-top: 25px solid transparent; 
+      border-bottom: 25px solid transparent; 
+      border-left: 30px solid #0095e6; 
+      border-radius: 5px;
+      margin: 0px 0px 0px 30px;
   }

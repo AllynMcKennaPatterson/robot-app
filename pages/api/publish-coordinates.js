@@ -1,7 +1,7 @@
 
 async function handler(req, res) {
   console.log("Publishing Data to Ubidots: " + JSON.stringify(req.body));
-  const response = await fetch("http://localhost:8080/publish-slider", {
+  const response = await fetch("http://localhost:8080/publish-coordinates", {
     method: "POST",
     body: JSON.stringify(req.body),
     headers: {
