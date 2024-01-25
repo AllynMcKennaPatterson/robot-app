@@ -8,8 +8,8 @@ function TestCube(props) {
 
     useFrame((state, delta) => {
         const speed = isHovered ? 3 : 1
-        ref.current.rotation.x += delta * speed
-        ref.current.rotation.y += delta * speed
+        // ref.current.rotation.x += delta * speed
+        // ref.current.rotation.y += delta * speed
         // ref.current.position.z = Math.sin(state.clock.elapsedTime) * 2
 
     })
