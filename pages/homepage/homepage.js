@@ -6,6 +6,7 @@ import CameraToggleButton from "@/components/camera-toggle-button/camera-toggle-
 import SliderControlModal from "@/components/controls/slider-control-modal/slider-control-modal";
 import { useState } from "react";
 import EndEffectorControlModal from "@/components/controls/end-effector-control-modal/end-effector-control-modal";
+import TestScene from "@/components/react-three-fiber/test-scene/test-scene";
 
 export default function HomePage(){
     const [openSliderModal, setOpenSliders] = useState(false);
@@ -14,6 +15,7 @@ export default function HomePage(){
     return(
         <div>
             <Header/>
+            <TestScene/>
             <CameraToggleButton/>
             <SliderControlButton setOpenSliders={() => setOpenSliders(true)} setOpenCoordinateModal={() => setOpenCoordinateModal(false)}/>
             <EndEffectorControlButton setOpenCoordinateModal={() => setOpenCoordinateModal(true)} setOpenSliders={() => setOpenSliders(false)}/>

@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import classes from "./slider-control-modal.module.css";
-import "rc-slider/assets/index.css";
 import GlobalContext from '../../../pages/Store/globalContext';
 
 
