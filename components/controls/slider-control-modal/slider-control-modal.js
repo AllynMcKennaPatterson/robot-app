@@ -29,13 +29,13 @@ function SliderControlModal(props) {
 
   function updateVal(command){
     switch(command.value){
-      case val1:
-        modelState.updateModelState({ joint: "joint1", angle: (((command.angle/4) + 90) * (Math.PI/180))})
+      case "val1":
         setVal1(command.angle)
+        modelState.updateModelState({ joint: "joint1", angle: (((command.angle/4) + 90) * (Math.PI/180))})
         break;
-      case val2:
-        modelState.updateModelState({ joint: "joint2", angle: (((command.angle)) * (Math.PI/180))})
+      case "val2":
         setVal2(command.angle)
+        modelState.updateModelState({ joint: "joint2", angle: (((command.angle/4) + 60) * (Math.PI/180))})
         break;
     } 
   }
@@ -61,7 +61,7 @@ function SliderControlModal(props) {
             id="typeinp"
             className={classes.slider}
             onChange={
-              (event) => updateVal({angle: event.target.value, value: val1})
+              (event) => updateVal({angle: event.target.value, value: "val1"})
             }
           ></input>
           <p className={classes.value}>{val1}</p>
@@ -75,7 +75,7 @@ function SliderControlModal(props) {
             defaultValue="90"
             className={classes.slider}
             onChange={
-              (event) => updateVal({angle: event.target.value, value: val2})
+              (event) => updateVal({angle: event.target.value, value: "val2"})
             }
           ></input>
           <p className={classes.value}>{val2}</p>

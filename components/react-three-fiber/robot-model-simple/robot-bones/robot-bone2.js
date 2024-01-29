@@ -7,11 +7,11 @@ function RobotBone2(props) {
   const modelState = useContext(ModelContext)
 
   useEffect(() => {
-    modelState.updateModelState({ joint: "joint2", angle: 0 });
+    modelState.updateModelState({ joint: "joint2", angle: 1.05 });
   }, [])
 
   return (
-    <group position={[0, 0, 0]} rotation={modelState.theModelData.bone2Rotation}>
+    <group position={[0, 0.5, -4]} rotation={modelState.theModelData.bone2Rotation}>
       <mesh position={props.position} ref={ref} >
         <boxGeometry args={props.size} />
         <meshStandardMaterial color={props.color} />

@@ -10,15 +10,14 @@ export function ModelContextProvider(props) {
     const [modelState, setModelState] = useState(defaultModel);
 
     function editModelState(command) {
-        if(command.joint == "joint1"){
+        if(command.joint === "joint1"){
             setModelState((previousState) => {
                 const newState = JSON.parse(JSON.stringify(previousState))
-                console.log("NewState" + newState.bone1Rotation)
                 newState.bone1Rotation = [command.angle, 0, 0]
                 return newState;
             })
         }
-        if(command.joint == "joint2"){
+        if(command.joint === "joint2"){
             setModelState((previousState) => {
                 const newState = JSON.parse(JSON.stringify(previousState))
                 console.log("NewState" + newState.bone2Rotation)
