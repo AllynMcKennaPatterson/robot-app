@@ -30,7 +30,7 @@ function SliderControlModal(props) {
   function updateVal(command){
     switch(command.value){
       case val1:
-        modelState.updateModelState({ joint: "joint1", angle: (command.angle * (Math.PI/180))})
+        modelState.updateModelState({ joint: "joint1", angle: (((command.angle/4) + 90) * (Math.PI/180))})
         setVal1(command.angle)
         break;
     } 
