@@ -15,7 +15,7 @@ function TestScene() {
         <directionalLight position={[0, 0, 2]} intensity={1} />
         <ambientLight intensity={1} />
         <GroundPlane/>
-        <RobotBaseSimple position={[0, 0.5, 0]} color={"#0095e6"} size={[2, 1, 2]} rotation={[0, 0, 0]}/>
+          <RobotBaseSimple position={[0, 0, -1]} color={"#0095e6"} size={[2, 1, 2]} rotation={[0, 0, 0]}/> 
         {/* <TestCube position={[0, 0, 0]} color={"#0095e6"} size={[1, 1, 1]} /> */}
         {/* <Torus position={[2, 0, 0]} size={[0.5, 0.1, 30, 30]} color={"hotpink"}/> */}
         {/* <OrbitControls/> */}
