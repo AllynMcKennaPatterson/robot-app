@@ -4,7 +4,8 @@ const ModelContext = createContext();
 
 export function ModelContextProvider(props) {
     const defaultModel = {
-        baseSimpleRotation: [0, 0, 0],
+        bone1Rotation: [0, 0, 0],
+        bone2Rotation: [0, 0, 0],
     }
     const [modelState, setModelState] = useState(defaultModel);
 
@@ -12,12 +13,19 @@ export function ModelContextProvider(props) {
         if(command.joint == "joint1"){
             setModelState((previousState) => {
                 const newState = JSON.parse(JSON.stringify(previousState))
-                console.log("NewState" + newState.baseSimpleRotation)
-                newState.baseSimpleRotation = [command.angle, 0, 0]
+                console.log("NewState" + newState.bone1Rotation)
+                newState.bone1Rotation = [command.angle, 0, 0]
                 return newState;
             })
         }
-        
+        if(command.joint == "joint2"){
+            setModelState((previousState) => {
+                const newState = JSON.parse(JSON.stringify(previousState))
+                console.log("NewState" + newState.bone2Rotation)
+                newState.bone2Rotation = [command.angle, 0, 0]
+                return newState;
+            })
+        }
     }
 
     const context = {
