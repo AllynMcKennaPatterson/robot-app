@@ -6,16 +6,19 @@ function RobotBaseSimple(props) {
   const ref = useRef();
   const modelState = useContext(ModelContext)
 
-    useEffect(() => {
-        modelState.updateModelState({ joint: "joint1", angle: 10 });
-        console.log("ModelState: " + modelState.theModelData.baseSimpleRotation)
-    },[])
+  useEffect(() => {
+    modelState.updateModelState({ joint: "joint1", angle: 10 });
+    console.log("ModelState: " + modelState.theModelData.baseSimpleRotation)
+  }, [])
 
   return (
-    <mesh position={props.position} ref={ref} rotation={modelState.theModelData.baseSimpleRotation}>
-      <boxGeometry args={props.size} />
-      <meshStandardMaterial color={props.color} />
-    </mesh>
+    <group position={[0, 0, 0]} rotation={modelState.theModelData.baseSimpleRotation}>
+      <mesh position={props.position} ref={ref} >
+        <boxGeometry args={props.size} />
+        <meshStandardMaterial color={props.color} />
+      </mesh>
+    </group>
+
   );
 }
 
