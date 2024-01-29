@@ -24,7 +24,6 @@ function SliderControlModal(props) {
     };
 
     console.log("Action:" + JSON.stringify(action));
-    modelState.updateModelState({ joint: "joint1", angle: (val1 * (Math.PI/180)) })
     await globalCtx.publishAngles(action);
   }
 
