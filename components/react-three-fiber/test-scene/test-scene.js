@@ -20,7 +20,7 @@ function TestScene() {
 
   return (
     <div className={classes.sceneContainer}>
-      <Canvas camera={{ fov: 40, position: [-14, 6, 8] }}>
+      <Canvas camera={{ fov: 40, position: [-20, 10, 8] }}>
         <OrbitControls makeDefault/>
         <directionalLight position={[-2, 6, -2]} intensity={2} />
         <ambientLight intensity={1} />
