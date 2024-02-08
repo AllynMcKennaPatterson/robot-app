@@ -8,6 +8,7 @@ import { useState } from "react";
 import EndEffectorControlModal from "@/components/controls/end-effector-control-modal/end-effector-control-modal";
 import TestScene from "@/components/react-three-fiber/test-scene/test-scene";
 import { ModelContextProvider } from "../Store/modelContext";
+import ScriptFooter from "@/components/script-footer/script-footer";
 
 export default function HomePage() {
   const [openSliderModal, setOpenSliders] = useState(false);
@@ -37,6 +38,7 @@ export default function HomePage() {
           onClose={() => setOpenCoordinateModal(false)}
         />
       </ModelContextProvider>
+      <ScriptFooter/>
     </div>
   );
 }
