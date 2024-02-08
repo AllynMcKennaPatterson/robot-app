@@ -30,7 +30,7 @@ function TestScene() {
             <RobotBone2 position={[0, 0, -1]} color={"#0095e6"} size={[1, 1, 2]} rotation={[0, 0, 0]} />
            </group>
         </group>
-        { modelState.targetBlock == true ? <TestCube position={[-3, 1, 3]} size={[1, 1, 1]} color={"#ff711f"}/> : console.log("Hidden block: " + modelState.targetBlock)}
+        { modelState.targetBlock == true ? <TestCube position={[-3, 1, 3]} size={[1, 1, 1]} color={"#ff711f"}/> : <></>}
       </Canvas>
     </div>
   );
