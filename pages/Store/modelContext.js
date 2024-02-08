@@ -27,7 +27,7 @@ export function ModelContextProvider(props) {
                 return newState;
             })
         }
-        if (command.joint === "joint5") {
+        if (command.joint === "base") {
             setModelState((previousState) => {
                 const newState = JSON.parse(JSON.stringify(previousState))
                 console.log("NewState" + newState.baseRotation)

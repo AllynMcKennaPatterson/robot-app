@@ -10,7 +10,7 @@ function SliderControlModal(props) {
   const [val2, setVal2] = useState(90);
   const [val3, setVal3] = useState(90);
   const [val4, setVal4] = useState(90);
-  const [val5, setVal5] = useState(90);
+  const [val5, setVal5] = useState(0);
   const globalCtx = useContext(GlobalContext);
   const modelState = useContext(ModelContext);
 
@@ -27,17 +27,20 @@ function SliderControlModal(props) {
     await globalCtx.publishAngles(action);
   }
 
-  function updateVal(command){
-    switch(command.value){
+  function updateVal(command) {
+    switch (command.value) {
       case "val1":
         setVal1(command.angle)
-        modelState.updateModelState({ joint: "joint1", angle: (((command.angle/4) + 90) * (Math.PI/180))})
+        modelState.updateModelState({ joint: "joint1", angle: (((command.angle / 4) + 90) * (Math.PI / 180)) })
         break;
       case "val2":
         setVal2(command.angle)
-        modelState.updateModelState({ joint: "joint2", angle: (((command.angle/4) + 60) * (Math.PI/180))})
+        modelState.updateModelState({ joint: "joint2", angle: (((command.angle / 4) + 60) * (Math.PI / 180)) })
         break;
-    } 
+      case "val5":
+        setVal5(command.angle)
+        modelState.updateModelState({ joint: "base", angle: (2*(command.angle) * (Math.PI / 180)) })
+    }
   }
 
   return (
@@ -61,7 +64,7 @@ function SliderControlModal(props) {
             id="typeinp"
             className={classes.slider}
             onChange={
-              (event) => updateVal({angle: event.target.value, value: "val1"})
+              (event) => updateVal({ angle: event.target.value, value: "val1" })
             }
           ></input>
           <p className={classes.value}>{val1}</p>
@@ -75,7 +78,7 @@ function SliderControlModal(props) {
             defaultValue="90"
             className={classes.slider}
             onChange={
-              (event) => updateVal({angle: event.target.value, value: "val2"})
+              (event) => updateVal({ angle: event.target.value, value: "val2" })
             }
           ></input>
           <p className={classes.value}>{val2}</p>
@@ -105,14 +108,16 @@ function SliderControlModal(props) {
           <p className={classes.value}>{val4}</p>
         </div>
         <div className={classes.sliders}>
-          <h3 className={classes.jointLabel}>J5</h3>
+          <h3 className={classes.jointLabel}>B0</h3>
           <input
             type="range"
             min="0"
             max="180"
-            defaultValue="90"
+            defaultValue="0"
             className={classes.slider}
-            onChange={(event) => setVal5(event.target.value)}
+            onChange={
+              (event) => updateVal({ angle: event.target.value, value: "val5" })
+            }
           ></input>
           <p className={classes.value}>{val5}</p>
         </div>

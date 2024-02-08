@@ -20,11 +20,11 @@ export default function HomePage() {
         <TestScene />
         <CameraToggleButton />
         <SliderControlButton
-          setOpenSliders={() => setOpenSliders(true)}
+          setOpenSliders={() => setOpenSliders(!openSliderModal)}
           setOpenCoordinateModal={() => setOpenCoordinateModal(false)}
         />
         <EndEffectorControlButton
-          setOpenCoordinateModal={() => setOpenCoordinateModal(true)}
+          setOpenCoordinateModal={() => setOpenCoordinateModal(!openCoordinateModal)}
           setOpenSliders={() => setOpenSliders(false)}
         />
         <VirtualObjectButton />
