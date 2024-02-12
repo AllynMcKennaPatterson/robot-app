@@ -9,6 +9,7 @@ import EndEffectorControlModal from "@/components/controls/end-effector-control-
 import TestScene from "@/components/react-three-fiber/test-scene/test-scene";
 import { ModelContextProvider } from "../Store/modelContext";
 import ScriptFooter from "@/components/script-footer/script-footer";
+import { ScriptContextProvider } from "../Store/scriptContext";
 
 export default function HomePage() {
   const [openSliderModal, setOpenSliders] = useState(false);
@@ -17,28 +18,32 @@ export default function HomePage() {
   return (
     <div>
       <Header />
-      <ModelContextProvider>
-        <TestScene />
-        <CameraToggleButton />
-        <SliderControlButton
-          setOpenSliders={() => setOpenSliders(!openSliderModal)}
-          setOpenCoordinateModal={() => setOpenCoordinateModal(false)}
-        />
-        <EndEffectorControlButton
-          setOpenCoordinateModal={() => setOpenCoordinateModal(!openCoordinateModal)}
-          setOpenSliders={() => setOpenSliders(false)}
-        />
-        <VirtualObjectButton />
-        <SliderControlModal
-          open={openSliderModal}
-          onClose={() => setOpenSliders(false)}
-        />
-        <EndEffectorControlModal
-          open={openCoordinateModal}
-          onClose={() => setOpenCoordinateModal(false)}
-        />
-      </ModelContextProvider>
-      <ScriptFooter/>
+      <ScriptContextProvider>
+        <ModelContextProvider>
+          <TestScene />
+          <CameraToggleButton />
+          <SliderControlButton
+            setOpenSliders={() => setOpenSliders(!openSliderModal)}
+            setOpenCoordinateModal={() => setOpenCoordinateModal(false)}
+          />
+          <EndEffectorControlButton
+            setOpenCoordinateModal={() =>
+              setOpenCoordinateModal(!openCoordinateModal)
+            }
+            setOpenSliders={() => setOpenSliders(false)}
+          />
+          <VirtualObjectButton />
+          <SliderControlModal
+            open={openSliderModal}
+            onClose={() => setOpenSliders(false)}
+          />
+          <EndEffectorControlModal
+            open={openCoordinateModal}
+            onClose={() => setOpenCoordinateModal(false)}
+          />
+        </ModelContextProvider>
+        <ScriptFooter />
+      </ScriptContextProvider>
     </div>
   );
 }
