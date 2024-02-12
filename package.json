@@ -14,13 +14,17 @@
     "@react-three/fiber": "^8.15.15",
     "@types/three": "^0.160.0",
     "@use-gesture/react": "^10.3.0",
+    "i": "^0.3.7",
     "next": "14.0.4",
+    "npm": "^10.4.0",
     "react": "^18",
+    "react-custom-scroll": "^5.0.0",
     "react-dom": "^18",
     "three": "^0.160.1",
     "three-stdlib": "^2.29.4"
   },
   "devDependencies": {
+    "babel-plugin-styled-components": "^2.1.4",
     "eslint": "^8",
     "eslint-config-next": "14.0.4"
   }
