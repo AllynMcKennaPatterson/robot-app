@@ -2,33 +2,86 @@ import { createContext, useState, useEffect, useLayoutEffect } from "react";
 
 const ScriptContext = createContext();
 
-export function ScriptContextProvider(props) { 
-    const actions = []
+export function ScriptContextProvider(props) {
+    const [actions, setActions] = useState([]);
 
-    const [sliderState, setSliderState] = useState(defaultModel);
+    const [sliderAction, setSliderState] = useState(
+        // {
+        //     actionType: "slider",
+        //     value: null,
+        //     action: {
+        //         val1: null, val2: null, val3: null, val4: null, val5: null
+        //     }
+        // }
+    );
 
+    useEffect(() => {
+        console.log("Use Effect sliderAction" + JSON.stringify(sliderAction));
+        if (sliderAction != null) {
+            setActions([
+                ...actions,
+                sliderAction
+            ]
+            )
+        }
 
-    const sliderAction = {
-        "actionType": "slider",
-        "value": null,
-        "action": {
-                    "val1": null, "val2": null, "val3": null, "val4": null, "val5": null
-                }
+    }, [sliderAction])
+
+    useEffect(() => {
+        console.log("Use Effect actions" + JSON.stringify(actions));
+    }, [actions])
+
+    // const sliderState = {
+    //     actionType: "slider",
+    //     value: null,
+    //     action: {
+    //         val1: null, val2: null, val3: null, val4: null, val5: null
+    //     }
+    // }
+
+    // function addSliderAction(sliderData) {
+    //     let newSliderData = {
+    //         actionType: "slider",
+    //         value: null,
+    //         action: {
+    //             val1: sliderData.servo1, val2: sliderData.servo2, val3: sliderData.servo3, val4: sliderData.servo4, val5: sliderData.servo5
+    //         }
+    //     }
+
+    //     console.log("newSliderData Obj: " + JSON.stringify(newSliderData))
+    //     setSliderState(sliderAction => ({
+    //         ...sliderAction,
+    //         ...newSliderData
+    //     }));
+    //     console.log("New Script Data: " + JSON.stringify(sliderAction))
+    //     actions.push(sliderAction)
+    //     console.log(actions)
+    // }
+
+    function addSliderAction(sliderData) {
+        let newSliderData = {
+            actionType: "slider",
+            value: null,
+            action: {
+                val1: sliderData.servo1, val2: sliderData.servo2, val3: sliderData.servo3, val4: sliderData.servo4, val5: sliderData.servo5
+            }
+        }
+        setSliderState((previousState) => ({
+            ...previousState,
+            newSliderData
+        }));
+        console.log("Current slider state: " + JSON.stringify(sliderAction));
+
+        // actions.push(sliderAction)
+        console.log("Actions: " + JSON.stringify(actions))
+        console.log(sliderAction);
     }
 
-    function addSliderAction(sliderData){
-        setSliderState((previousState) => {
-                const newState = JSON.parse(JSON.stringify(previousState))
-                newState.sliderAction.action.val1 = sliderData.val1;
-                newState.sliderAction.action.val2 = sliderData.val2;
-                newState.sliderAction.action.val3 = sliderData.val3;
-                newState.sliderAction.action.val4 = sliderData.val4;
-                newState.sliderAction.action.val5 = sliderData.val5;
-                console.log("Slider Action Obj: " + JSON.stringify(sliderAction))
-                return newState;
-            })
-    }
-
+    const context = {
+        addSliderData: addSliderAction,
+        sliderAction: sliderAction,
+        actions: actions,
+    };
     return (
         <ScriptContext.Provider value={context}>
             {props.children}
