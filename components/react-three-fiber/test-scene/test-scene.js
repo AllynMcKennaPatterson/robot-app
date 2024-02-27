@@ -28,7 +28,7 @@ function TestScene() {
         <group position={[0, 0, 0]} rotation={modelState.theModelData.baseRotation}>
           <RobotBase position={[0, 0.5, 0]} color={"#0095e6"} size={[2, 1, 3]} rotation={[0, 0, 0]} />
           <group rotation={modelState.theModelData.bone1Rotation}> {/* Joint 1 */}
-            <RobotBone1 position={[0, 0, -2]} color={"#0095e6"} size={[1, 1, 6]} rotation={[0, 0, 0]} />
+            <RobotBone1 position={[0, 0, -3]} color={"#0095e6"} size={[1, 1, 4]} rotation={[0, 0, 0]} />
             <RobotBone2 position={[0, 0, -1]} color={"#0095e6"} size={[1, 1, 2]} rotation={[0, 0, 0]} />
            </group>
         </group>

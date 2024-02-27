@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import classes from "./slider-control-modal.module.css";
 import GlobalContext from "../../../pages/Store/globalContext";
 import ModelContext from "@/pages/Store/modelContext";
+import ScriptContext from "@/pages/Store/scriptContext";
 
 function SliderControlModal(props) {
   if (!props.open) return null;
@@ -13,8 +14,9 @@ function SliderControlModal(props) {
   const [val5, setVal5] = useState(0);
   const globalCtx = useContext(GlobalContext);
   const modelState = useContext(ModelContext);
+  const scriptCtx = useContext(ScriptContext);
 
-  async function actionHandler() {
+  async function publishActionHandler() {
     const action = {
       servo1: val1,
       servo2: val2,
@@ -25,6 +27,19 @@ function SliderControlModal(props) {
 
     console.log("Action:" + JSON.stringify(action));
     await globalCtx.publishAngles(action);
+  }
+
+  async function scriptActionHandler() {
+    const sliderData = {
+      servo1: val1,
+      servo2: val2,
+      servo3: val3,
+      servo4: val4,
+      servo5: val5,
+    };
+
+    console.log("Action:" + JSON.stringify(sliderData));
+    await scriptCtx.addSliderData(sliderData);
   }
 
   function updateVal(command) {
@@ -39,7 +54,7 @@ function SliderControlModal(props) {
         break;
       case "val5":
         setVal5(command.angle)
-        modelState.updateModelState({ joint: "base", angle: (2*(command.angle) * (Math.PI / 180)) })
+        modelState.updateModelState({ joint: "base", angle: (2 * (command.angle) * (Math.PI / 180)) })
     }
   }
 
@@ -123,11 +138,17 @@ function SliderControlModal(props) {
         </div>
       </div>
 
-      <div className={classes.buttonContainer} onClick={actionHandler}>
+      <div className={classes.buttonContainer} onClick={publishActionHandler}>
         <div className={classes.buttonContent}>
           <h3 className={classes.buttonText}>Publish</h3>
         </div>
       </div>
+      <div className={classes.scriptButtonContainer} onClick={scriptActionHandler}>
+        <div className={classes.scriptButtonContent}>
+          <h3 className={classes.scriptButtonText}>Add To Script</h3>
+        </div>
+      </div>
+
     </div>
   );
 }
