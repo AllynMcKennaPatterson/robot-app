@@ -91,7 +91,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 15px 0px 25px 0px;
+    margin: 15px 0px 15px 0px;
     height: 40px;
     border-radius: 50px;
     background-color: #0095e6;
@@ -99,8 +99,25 @@
     cursor: pointer;
 }
 
+.scriptButtonContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0px 25px 0px;
+  height: 40px;
+  width: 170px;
+  border-radius: 50px;
+  background-color: #0095e6;
+  box-shadow: 0px 2px 2px -1px rgba(0, 0, 0, 0.1), 0px 4px 10px -1px rgba(0, 0, 0, 0.05), 0px -1px 4px 0px rgba(0, 0, 0, 0.05) inset;
+  cursor: pointer;
+}
 .buttonContent{
     margin: 0px 20px;
+    font-weight: 200;
+}
+
+.scriptButtonContent{
+  margin: 0px 20px;
     font-weight: 200;
 }
 
@@ -109,6 +126,13 @@
     margin: 0px;
     color: #000000;
 }
+
+.scriptButtonText{
+  font-weight: 600;
+  margin: 0px;
+  color: #000000;
+}
+
 
 .buttonLink :hover{
     background-color: rgb(30, 106, 219);
