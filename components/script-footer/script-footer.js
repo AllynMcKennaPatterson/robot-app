@@ -1,17 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import classes from "./script-footer.module.css";
 import ScriptIcon from "../script-icons/script-icon";
-import CustomScroll from "react-custom-scroll";
+import ScriptContext from "@/pages/Store/scriptContext";
 
 function ScriptFooter(props) {
+  const scriptCtx = useContext(ScriptContext);
   const [openFooter, setOpenFooter] = useState(false);
+  const actions = scriptCtx.actions;
   const action = [
       {
         "icon":"slider"
       }, 
       {
         "icon": "delay",
-        "value": "700",
+        "value": "400",
       }, 
       {
         "icon":"endEffector"
@@ -25,10 +27,18 @@ function ScriptFooter(props) {
       }, 
       {
         "icon":"endEffector"
+      },
+      {
+        "icon": "delay",
+        "value": "700",
+      }, 
+      {
+        "icon":"slider"
       }];
 
   function handleToggle(props){
-    console.log("Clicked")
+    // console.log("Clicked")
+    console.log(JSON.stringify(actions))
     setOpenFooter(!openFooter)
   }
   if(openFooter == true){
