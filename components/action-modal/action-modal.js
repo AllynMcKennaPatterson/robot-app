@@ -15,7 +15,7 @@ function ActionModal(props) {
         <div className={classes.container}>
             <div className={classes.header}>
                 <div></div>
-                <h3 className={classes.title}>Action {props.index} Data</h3>
+                <h3 className={classes.title}>Action {props.index + 1}</h3>
                 <h2 className={classes.close} onClick={props.onClose}>
                     x
                 </h2>
