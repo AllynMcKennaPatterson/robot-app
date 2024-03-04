@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect, useLayoutEffect } from "react";
 
 const ScriptContext = createContext();
+let index = 0;
 
 export function ScriptContextProvider(props) {
     const [actions, setActions] = useState([]);
@@ -59,13 +60,15 @@ export function ScriptContextProvider(props) {
     // }
 
     function addSliderAction(sliderData) {
+        
         let data = {
             actionType: "slider",
-            value: null,
+            value: index,
             action: {
                 val1: sliderData.servo1, val2: sliderData.servo2, val3: sliderData.servo3, val4: sliderData.servo4, val5: sliderData.servo5
             }
         }
+        index++;
         setSliderState((previousState) => ({
             ...previousState,
             data
