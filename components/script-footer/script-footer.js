@@ -7,6 +7,7 @@ function ScriptFooter(props) {
   const scriptCtx = useContext(ScriptContext);
   const [openFooter, setOpenFooter] = useState(false);
   const actions = scriptCtx.actions;
+  console.log("Actions from ctx: " + JSON.stringify(actions))
   const action = [
       {
         "icon":"slider"
@@ -47,9 +48,9 @@ function ScriptFooter(props) {
       
       <div className={classes.scriptContainer}>
       <ul className={classes.list}>
-        {action.map((action) => (
+        {actions.map((action) => (
           <li className={classes.postContainer}>
-            <ScriptIcon action={action.icon} value={action.value}></ScriptIcon>
+            <ScriptIcon type={action.data.actionType} value={action.value}></ScriptIcon>
           </li>
           
         ))}
