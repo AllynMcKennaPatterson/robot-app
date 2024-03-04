@@ -2,7 +2,7 @@ import { useState } from "react";
 import classes from "./script-icon.module.css";
 
 function ScriptIcon(props) {
-  if (props.action === "slider") {
+  if (props.type === "slider") {
     return (
       <div className={classes.container}>
         <div className={classes.iconContainer}>
@@ -13,7 +13,7 @@ function ScriptIcon(props) {
         </div>
       </div>
     );
-  } else if (props.action === "endEffector") {
+  } else if (props.type === "endEffector") {
     return (
       <div className={classes.container}>
         <div className={classes.iconContainer}>
@@ -24,7 +24,7 @@ function ScriptIcon(props) {
         </div>
       </div>
     );
-  } else if (props.action === "delay") {
+  } else if (props.type === "delay") {
     return (
       <div
         className={classes.arrowContainer}
