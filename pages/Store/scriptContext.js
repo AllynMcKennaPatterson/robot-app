@@ -59,7 +59,7 @@ export function ScriptContextProvider(props) {
     // }
 
     function addSliderAction(sliderData) {
-        let newSliderData = {
+        let data = {
             actionType: "slider",
             value: null,
             action: {
@@ -68,7 +68,7 @@ export function ScriptContextProvider(props) {
         }
         setSliderState((previousState) => ({
             ...previousState,
-            newSliderData
+            data
         }));
         console.log("Current slider state: " + JSON.stringify(sliderAction));
 
