@@ -2,9 +2,16 @@ import { useState } from "react";
 import classes from "./script-icon.module.css";
 
 function ScriptIcon(props) {
+  
+  function toggleModal(){
+    props.setIndex(props.action.data.value);
+    props.setOpenActionModal(true);
+  }
+
   if (props.type === "slider") {
     return (
-      <div className={classes.container}>
+      <div>
+        <div className={classes.container} onClick={toggleModal}>
         <div className={classes.iconContainer}>
           <img
             className={classes.icon}
@@ -12,10 +19,12 @@ function ScriptIcon(props) {
           />
         </div>
       </div>
+      </div>
     );
   } else if (props.type === "endEffector") {
     return (
-      <div className={classes.container}>
+      <div >
+        <div className={classes.container}>
         <div className={classes.iconContainer}>
           <img
             className={classes.icon}
@@ -23,10 +32,12 @@ function ScriptIcon(props) {
           />
         </div>
       </div>
+      </div>
     );
   } else if (props.type === "delay") {
     return (
-      <div
+      <div>
+        <div
         className={classes.arrowContainer}
         style={{ width: props.value + "px" }}
       >
@@ -42,6 +53,7 @@ function ScriptIcon(props) {
           </div>
           <div className={classes.point}></div>
         </div>
+      </div>
       </div>
     );
   }
