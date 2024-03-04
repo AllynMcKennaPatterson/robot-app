@@ -1,20 +1,25 @@
 import { createContext, useState, useEffect, useLayoutEffect } from "react";
 
 const ScriptContext = createContext();
+
 let index = 0;
 
 export function ScriptContextProvider(props) {
     const [actions, setActions] = useState([]);
 
-    const [sliderAction, setSliderState] = useState(
-        // {
-        //     actionType: "slider",
-        //     value: null,
-        //     action: {
-        //         val1: null, val2: null, val3: null, val4: null, val5: null
-        //     }
-        // }
-    );
+    const [sliderAction, setSliderState] = useState();
+
+    function getIndex() {
+        console.log("Length of actions: " + actions.length)
+        if (actions.length != 0) {
+            index = actions[actions.length - 1].data.value + 1;
+            console.log("last index: " + actions[actions.length - 1].data.value)
+        }
+        else {
+            index = 0;
+            console.log("Index: " + index)
+        }
+    }
 
     useEffect(() => {
         console.log("Use Effect sliderAction" + JSON.stringify(sliderAction));
@@ -60,7 +65,7 @@ export function ScriptContextProvider(props) {
     // }
 
     function addSliderAction(sliderData) {
-        
+        getIndex();
         let data = {
             actionType: "slider",
             value: index,
@@ -68,7 +73,6 @@ export function ScriptContextProvider(props) {
                 val1: sliderData.servo1, val2: sliderData.servo2, val3: sliderData.servo3, val4: sliderData.servo4, val5: sliderData.servo5
             }
         }
-        index++;
         setSliderState((previousState) => ({
             ...previousState,
             data
