@@ -1,15 +1,15 @@
 import classes from "./slider-control-button.module.css";
 
 function SliderControlButton(props) {
-  function clickEvent(){
+  function clickEvent() {
     props.setOpenSliders(true)
     props.setOpenCoordinateModal(false)
+    props.setOpenDelayModal(false)
   }
-
   return (
     <div
       className={classes.controlContainer}
-      onClick={() => clickEvent()}
+      onClick={clickEvent}
     >
       <div className={classes.buttonContent}>
         <img src="/assets/images/control-buttons/slider-icon.svg" />
