@@ -59,8 +59,3 @@ export default function HomePage() {
     </div>
   );
 }
-
-// setOpenCoordinateModal={() =>
-//   setOpenCoordinateModal(!openCoordinateModal)
-// }
-// setOpenSliders={() => setOpenSliders(false)}
