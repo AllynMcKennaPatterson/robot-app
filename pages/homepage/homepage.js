@@ -10,10 +10,13 @@ import TestScene from "@/components/react-three-fiber/test-scene/test-scene";
 import { ModelContextProvider } from "../Store/modelContext";
 import ScriptFooter from "@/components/script-footer/script-footer";
 import { ScriptContextProvider } from "../Store/scriptContext";
+import DelayButton from "@/components/control-buttons/delay-button/delay-button";
+import DelayModal from "@/components/controls/delay-modal/delay-modal";
 
 export default function HomePage() {
   const [openSliderModal, setOpenSliders] = useState(false);
   const [openCoordinateModal, setOpenCoordinateModal] = useState(false);
+  const [openDelayModal, setOpenDelayModal] = useState(false);
 
   return (
     <div>
@@ -25,14 +28,23 @@ export default function HomePage() {
           <SliderControlButton
             setOpenSliders={() => setOpenSliders(!openSliderModal)}
             setOpenCoordinateModal={() => setOpenCoordinateModal(false)}
+            setOpenDelayModal={() => setOpenDelayModal(false)}
           />
           <EndEffectorControlButton
-            setOpenCoordinateModal={() =>
-              setOpenCoordinateModal(!openCoordinateModal)
-            }
+            setOpenCoordinateModal={() => setOpenCoordinateModal(true)}
             setOpenSliders={() => setOpenSliders(false)}
+            setOpenDelayModal={() => setOpenDelayModal(false)}
           />
           <VirtualObjectButton />
+          <DelayButton
+          setOpenDelayModal={() => setOpenDelayModal(!openDelayModal)}
+          setOpenCoordinateModal={() => setOpenCoordinateModal(false)}
+          setOpenSliders={() => setOpenSliders(false)}
+          />
+          <DelayModal
+            open={openDelayModal}
+            onClose={() => setOpenDelayModal(false)}
+          />
           <SliderControlModal
             open={openSliderModal}
             onClose={() => setOpenSliders(false)}
@@ -47,3 +59,8 @@ export default function HomePage() {
     </div>
   );
 }
+
+// setOpenCoordinateModal={() =>
+//   setOpenCoordinateModal(!openCoordinateModal)
+// }
+// setOpenSliders={() => setOpenSliders(false)}
