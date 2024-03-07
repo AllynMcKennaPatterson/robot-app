@@ -70,8 +70,8 @@
 
 .scriptContainer::-webkit-scrollbar-thumb {
   background-color: #0095e6;    /* color of the scroll thumb */
-  border-radius: 7px;       /* roundness of the scroll thumb */
-  border: 3px solid #c9c9c9;  /* creates padding around scroll thumb */
+  border-radius: 7px;             /* roundness of the scroll thumb */
+  border: 3px solid #c9c9c9;    /* creates padding around scroll thumb */
 }
 
 .title{
