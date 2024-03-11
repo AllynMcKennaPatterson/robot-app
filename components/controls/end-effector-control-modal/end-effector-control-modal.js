@@ -1,17 +1,31 @@
 import { useContext, useEffect, useState } from "react";
 import classes from "./end-effector-control-modal.module.css";
 import GlobalContext from '../../../pages/Store/globalContext';
+import ScriptContext from "@/pages/Store/scriptContext";
 /*
   TODO: I will probably need to save val1, val2, and v3 in context
         so they don't reset to 0 when the model is reopened
 */
 function EndEffectorControlModal(props) {
+  const scriptCtx = useContext(ScriptContext);
+
   if (!props.open) return null;
 
   const [val1, setVal1] = useState(0);
   const [val2, setVal2] = useState(0);
   const [val3, setVal3] = useState(0);
   const globalCtx = useContext(GlobalContext);
+
+  async function scriptActionHandler(){
+    console.log("EE script clicked")
+    const coordData = {
+      x: val1,
+      y: val2,
+      z: val3,
+    };
+    console.log("Action: " + JSON.stringify(coordData))
+    await scriptCtx.addCoordinateData(coordData);
+  }
 
   async function actionHandler(){
     const action = {
@@ -60,6 +74,11 @@ function EndEffectorControlModal(props) {
       <div className={classes.buttonContainer} onClick={actionHandler}>
         <div className={classes.buttonContent}>
           <h3 className={classes.buttonText}>Publish</h3>
+        </div>
+      </div>
+      <div className={classes.scriptButtonContainer} onClick={scriptActionHandler}>
+        <div className={classes.scriptButtonContent}>
+          <h3 className={classes.scriptButtonText}>Add To Script</h3>
         </div>
       </div>
     </div>
