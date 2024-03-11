@@ -24,7 +24,7 @@ function ScriptIcon(props) {
   } else if (props.type === "endEffector") {
     return (
       <div >
-        <div className={classes.container}>
+        <div className={classes.container} onClick={toggleModal}>
         <div className={classes.iconContainer}>
           <img
             className={classes.icon}
@@ -39,17 +39,17 @@ function ScriptIcon(props) {
       <div>
         <div
         className={classes.arrowContainer}
-        style={{ width: props.value + "px" }}
+        style={{ width: (props.action.data.action/2) + "px" }}
       >
         <div
           className={classes.arrow}
-          style={{ width: Number(props.value) + 30 + "px" }}
+          style={{ width: Number(props.action.data.action/2) + 30 + "px" }}
         >
           <div
             className={classes.line}
-            style={{ width: Number(props.value) - 30 + "px" }}
+            style={{ width: Number(props.action.data.action/2) - 30 + "px" }}
           >
-            <div style={{ marginTop: 10 }}>{props.value}ms</div>
+            <div style={{ marginTop: 10 }}>{props.action.data.action}ms</div>
           </div>
           <div className={classes.point}></div>
         </div>

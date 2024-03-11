@@ -12,34 +12,6 @@ function ScriptFooter(props) {
   
   const actions = scriptCtx.actions;
   console.log("Actions from ctx: " + JSON.stringify(actions))
-  const action = [
-      {
-        "icon":"slider"
-      }, 
-      {
-        "icon": "delay",
-        "value": "400",
-      }, 
-      {
-        "icon":"endEffector"
-      },
-      {
-        "icon":"slider"
-      }, 
-      {
-        "icon": "delay",
-        "value": "500",
-      }, 
-      {
-        "icon":"endEffector"
-      },
-      {
-        "icon": "delay",
-        "value": "700",
-      }, 
-      {
-        "icon":"slider"
-      }];
 
   function handleToggle(){
     console.log(JSON.stringify(actions))

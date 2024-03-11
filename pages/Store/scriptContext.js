@@ -8,6 +8,8 @@ export function ScriptContextProvider(props) {
     const [actions, setActions] = useState([]);
 
     const [sliderAction, setSliderState] = useState();
+    const [delayAction, setDelayValue] = useState();
+    const [coordAction, setCoordValue] = useState();
 
     function getIndex() {
         console.log("Length of actions: " + actions.length)
@@ -22,6 +24,18 @@ export function ScriptContextProvider(props) {
     }
 
     useEffect(() => {
+        console.log("Use Effect delayAction" + JSON.stringify(delayAction));
+        if (delayAction != null) {
+            setActions([
+                ...actions,
+                delayAction
+            ]
+            )
+        }
+
+    }, [delayAction])
+
+    useEffect(() => {
         console.log("Use Effect sliderAction" + JSON.stringify(sliderAction));
         if (sliderAction != null) {
             setActions([
@@ -32,6 +46,18 @@ export function ScriptContextProvider(props) {
         }
 
     }, [sliderAction])
+
+    useEffect(() => {
+        console.log("Use Effect coordAction" + JSON.stringify(coordAction));
+        if (coordAction != null) {
+            setActions([
+                ...actions,
+                coordAction
+            ]
+            )
+        }
+
+    }, [coordAction])
 
     useEffect(() => {
         console.log("Use Effect actions" + JSON.stringify(actions));
@@ -68,7 +94,7 @@ export function ScriptContextProvider(props) {
         getIndex();
         let data = {
             actionType: "slider",
-            value: index,
+            value: index,       //TODO: Rename value key to index
             action: {
                 val1: sliderData.servo1, val2: sliderData.servo2, val3: sliderData.servo3, val4: sliderData.servo4, val5: sliderData.servo5
             }
@@ -84,9 +110,42 @@ export function ScriptContextProvider(props) {
         console.log(sliderAction);
     }
 
+    function addDelay(delayData){
+        getIndex();
+        let data = {
+            actionType: "delay",
+            value: index,       //TODO: Rename value key to index
+            action: parseInt(delayData),
+        }
+        setDelayValue((previousState) => ({
+            ...previousState,
+            data
+        }));
+        console.log("Current delay state: " + JSON.stringify(sliderAction));
+    }
+
+    function addCoordinate(coordData){
+        getIndex();
+        let data = {
+            actionType: "endEffector",
+            value: index,       //TODO: Rename value key to index
+            action: {
+                val1: coordData.x, val2: coordData.y, val3: coordData.z
+            }
+        }
+        console.log("EE Data: " + JSON.stringify(data))
+        setCoordValue((previousState) => ({
+            ...previousState,
+            data
+        }));
+    }
+
     const context = {
         addSliderData: addSliderAction,
+        addDelayData: addDelay,
+        addCoordinateData: addCoordinate, 
         sliderAction: sliderAction,
+        delayAction, delayAction,
         actions: actions,
     };
     return (
