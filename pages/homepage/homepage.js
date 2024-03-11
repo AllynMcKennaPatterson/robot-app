@@ -31,7 +31,7 @@ export default function HomePage() {
             setOpenDelayModal={() => setOpenDelayModal(false)}
           />
           <EndEffectorControlButton
-            setOpenCoordinateModal={() => setOpenCoordinateModal(true)}
+            setOpenCoordinateModal={() => setOpenCoordinateModal(!openCoordinateModal)}
             setOpenSliders={() => setOpenSliders(false)}
             setOpenDelayModal={() => setOpenDelayModal(false)}
           />
