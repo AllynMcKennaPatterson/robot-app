@@ -2,12 +2,16 @@ import { useContext } from "react";
 import classes from "./virtual-object-button.module.css";
 import ModelContext from "@/pages/Store/modelContext";
 
-function VirtualObjectButton() {
+function VirtualObjectButton(props) {
 
   const modelState = useContext(ModelContext);
 
   function clickHandler() {
     modelState.toggleTargetBlock()
+    props.setOpenSliders(false)
+    props.setOpenObjectModal(true)
+    props.setOpenCoordinateModal(false)
+    props.setOpenDelayModal(false)
   }
 
   return (

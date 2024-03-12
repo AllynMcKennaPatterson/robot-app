@@ -9,48 +9,50 @@ function ScriptFooter(props) {
   const [openFooter, setOpenFooter] = useState(false);
   const [openActionModal, setOpenActionModal] = useState(false);
   const [index, setIndex] = useState(0);
-  
+
   const actions = scriptCtx.actions;
   console.log("Actions from ctx: " + JSON.stringify(actions))
 
-  function handleToggle(){
+  function handleToggle() {
     console.log(JSON.stringify(actions))
     setOpenFooter(!openFooter)
     console.log("Index " + index);
   }
-  if(openFooter == true){
+  if (openFooter == true) {
     return (
       <div>
-      {actions.length == 0 ? null : <ActionModal open={openActionModal} action={actions[index].data} index={index} actionType={actions[index].data.actionType} onClose={() => setOpenActionModal(false)} />}
-    <div className={classes.footerContainer}>
-      
-      <div className={classes.scriptContainer}>
-      <ul className={classes.list}>
-        {actions.map((action) => (
-          <li className={classes.postContainer}>
-            <ScriptIcon type={action.data.actionType} value={action.value} action={action} setOpenActionModal={() => setOpenActionModal(true) }  
-            setIndex={() => setIndex(action.data.value)}></ScriptIcon>
-          </li>
-        ))}
-      </ul>
-      </div>
-      
-      <div className={classes.triangleDown}
-        onClick={handleToggle}></div>
-      </div>
+        {actions.length == 0 ? null : <ActionModal open={openActionModal} action={actions[index].data} index={index} actionType={actions[index].data.actionType} onClose={() => setOpenActionModal(false)} />}
+        <div className={classes.footerContainer}>
+
+          <div className={classes.scriptContainer}>
+            <div className={classes.listContainer}>
+              <ul className={classes.list}>
+                {actions.map((action) => (
+                  <li className={classes.postContainer}>
+                    <ScriptIcon type={action.data.actionType} value={action.value} action={action} setOpenActionModal={() => setOpenActionModal(true)}
+                      setIndex={() => setIndex(action.data.value)}></ScriptIcon>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className={classes.triangleDown}
+            onClick={handleToggle}></div>
+        </div>
       </div>
     );
   }
-  else{
+  else {
     return (
       <div className={classes.footerContainerClosed}>
         <p className={classes.title}>Script</p>
         <div className={classes.triangleUp}
           onClick={handleToggle}></div>
-        </div>
-      );
+      </div>
+    );
   }
-  
+
 }
 
 export default ScriptFooter;

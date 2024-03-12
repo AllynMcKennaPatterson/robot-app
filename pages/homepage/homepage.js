@@ -12,11 +12,14 @@ import ScriptFooter from "@/components/script-footer/script-footer";
 import { ScriptContextProvider } from "../Store/scriptContext";
 import DelayButton from "@/components/control-buttons/delay-button/delay-button";
 import DelayModal from "@/components/controls/delay-modal/delay-modal";
+import VirtualObjectModal from "@/components/controls/virtual-object-modal/virtual-object-modal";
 
 export default function HomePage() {
   const [openSliderModal, setOpenSliders] = useState(false);
   const [openCoordinateModal, setOpenCoordinateModal] = useState(false);
   const [openDelayModal, setOpenDelayModal] = useState(false);
+  const [openObjectModal, setOpenObjectModal] = useState(false);
+
 
   return (
     <div>
@@ -35,7 +38,11 @@ export default function HomePage() {
             setOpenSliders={() => setOpenSliders(false)}
             setOpenDelayModal={() => setOpenDelayModal(false)}
           />
-          <VirtualObjectButton />
+          <VirtualObjectButton 
+          setOpenObjectModal={() => setOpenObjectModal(!openObjectModal)}
+          setOpenDelayModal={() => setOpenDelayModal(false)}
+          setOpenCoordinateModal={() => setOpenCoordinateModal(false)}
+          setOpenSliders={() => setOpenSliders(false)} />
           <DelayButton
           setOpenDelayModal={() => setOpenDelayModal(!openDelayModal)}
           setOpenCoordinateModal={() => setOpenCoordinateModal(false)}
@@ -53,6 +60,9 @@ export default function HomePage() {
             open={openCoordinateModal}
             onClose={() => setOpenCoordinateModal(false)}
           />
+          <VirtualObjectModal
+          open={openObjectModal}
+          onClose={() => setOpenObjectModal(false)}/>
         </ModelContextProvider>
         <ScriptFooter />
       </ScriptContextProvider>
