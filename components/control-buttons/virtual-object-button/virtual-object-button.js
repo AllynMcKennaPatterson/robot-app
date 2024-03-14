@@ -7,11 +7,11 @@ function VirtualObjectButton(props) {
   const modelState = useContext(ModelContext);
 
   function clickHandler() {
-    modelState.toggleTargetBlock()
-    props.setOpenSliders(false)
     props.setOpenObjectModal(true)
+    props.setOpenSliders(false)
     props.setOpenCoordinateModal(false)
     props.setOpenDelayModal(false)
+    modelState.toggleTargetBlock()
   }
 
   return (

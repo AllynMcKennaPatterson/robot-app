@@ -30,28 +30,29 @@ export default function HomePage() {
           <CameraToggleButton />
           <SliderControlButton
             setOpenSliders={() => setOpenSliders(!openSliderModal)}
+            setOpenObjectModal={() => setOpenObjectModal(false)}
             setOpenCoordinateModal={() => setOpenCoordinateModal(false)}
             setOpenDelayModal={() => setOpenDelayModal(false)}
           />
           <EndEffectorControlButton
             setOpenCoordinateModal={() => setOpenCoordinateModal(!openCoordinateModal)}
+            setOpenObjectModal={() => setOpenObjectModal(false)}
             setOpenSliders={() => setOpenSliders(false)}
             setOpenDelayModal={() => setOpenDelayModal(false)}
           />
-          <VirtualObjectButton 
-          setOpenObjectModal={() => setOpenObjectModal(!openObjectModal)}
-          setOpenDelayModal={() => setOpenDelayModal(false)}
-          setOpenCoordinateModal={() => setOpenCoordinateModal(false)}
-          setOpenSliders={() => setOpenSliders(false)} />
+          <VirtualObjectButton
+            setOpenSliders={() => setOpenSliders(false)}
+            setOpenObjectModal={() => setOpenObjectModal(!openObjectModal)}
+            setOpenDelayModal={() => setOpenDelayModal(false)}
+            setOpenCoordinateModal={() => setOpenCoordinateModal(false)}
+             />
           <DelayButton
-          setOpenDelayModal={() => setOpenDelayModal(!openDelayModal)}
-          setOpenCoordinateModal={() => setOpenCoordinateModal(false)}
-          setOpenSliders={() => setOpenSliders(false)}
+            setOpenDelayModal={() => setOpenDelayModal(!openDelayModal)}
+            setOpenObjectModal={() => setOpenObjectModal(false)}
+            setOpenCoordinateModal={() => setOpenCoordinateModal(false)}
+            setOpenSliders={() => setOpenSliders(false)}
           />
-          <DelayModal
-            open={openDelayModal}
-            onClose={() => setOpenDelayModal(false)}
-          />
+
           <SliderControlModal
             open={openSliderModal}
             onClose={() => setOpenSliders(false)}
@@ -61,8 +62,13 @@ export default function HomePage() {
             onClose={() => setOpenCoordinateModal(false)}
           />
           <VirtualObjectModal
-          open={openObjectModal}
-          onClose={() => setOpenObjectModal(false)}/>
+            open={openObjectModal}
+            onClose={() => setOpenObjectModal(false)}
+          />
+          <DelayModal
+            open={openDelayModal}
+            onClose={() => setOpenDelayModal(false)}
+          />
         </ModelContextProvider>
         <ScriptFooter />
       </ScriptContextProvider>

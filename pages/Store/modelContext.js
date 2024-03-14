@@ -42,11 +42,16 @@ export function ModelContextProvider(props) {
         console.log(showTargetBlock);
     }
 
+    function hideTargetBlock(){
+        setShowTargetBlock(false);
+    }
+
     const context = {
         theModelData: modelState,
         targetBlock: showTargetBlock,
         updateModelState: editModelState,
         toggleTargetBlock: toggleTargetBlock,
+        hideTargetBlock: hideTargetBlock,
     };
     return (
         <ModelContext.Provider value={context}>
