@@ -1,11 +1,18 @@
+import { useContext } from "react";
 import classes from "./end-effector-control-button.module.css";
+import ModelContext from "@/pages/Store/modelContext";
 
 function EndEffectorControlButton(props) {
-  console.log('EndEffectorControlButton JSON.stringify(props): ' +  JSON.stringify(props))
+
+  const modelState = useContext(ModelContext);
+
   function clickEvent() {
     props.setOpenCoordinateModal(true)
     props.setOpenSliders(false)
-    props.setOpenDelayModal(true)
+    props.setOpenDelayModal(false)
+    props.setOpenObjectModal(false)
+    modelState.hideTargetBlock()
+
   }
   return (
     <div 

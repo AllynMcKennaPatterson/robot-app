@@ -4,11 +4,14 @@ import ModelContext from "@/pages/Store/modelContext";
 
 function DelayButton(props) {
 
+  const modelState = useContext(ModelContext);
+
   function clickHandler() {
-    console.log("clicked")
     props.setOpenDelayModal(true)
     props.setOpenSliders(true)
     props.setOpenCoordinateModal(false)
+    props.setOpenObjectModal(false)
+    modelState.hideTargetBlock()
   }
 
   return (

@@ -3,8 +3,6 @@ import classes from "./virtual-object-modal.module.css";
 import ScriptContext from "@/pages/Store/scriptContext";
 
 function VirtualObjectModal(props) {
-  const [delay, setDelay] = useState(0);
-  const scriptCtx = useContext(ScriptContext);
 
   async function scriptActionHandler() {
     console.log("Adding Virtual Object to script")
