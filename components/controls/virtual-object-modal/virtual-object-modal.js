@@ -1,9 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import classes from "./virtual-object-modal.module.css";
 import ScriptContext from "@/pages/Store/scriptContext";
+import ModelContext from "@/pages/Store/modelContext";
 
 function VirtualObjectModal(props) {
 
+  const modelState = useContext(ModelContext);
+  
   async function scriptActionHandler() {
     console.log("Adding Virtual Object to script")
   }
@@ -12,13 +15,18 @@ function VirtualObjectModal(props) {
     console.log("Publishing Virtual Object")
   }
 
+  function closeHandler() {
+    props.onClose()
+    modelState.toggleTargetBlock()
+  }
+
   if (!props.open) return null;
   return (
     <div className={classes.modalContainer}>
       <div className={classes.header}>
         <div></div>
         <h3 className={classes.title}>Virtual Object</h3>
-        <h2 className={classes.close} onClick={props.onClose}>
+        <h2 className={classes.close} onClick={closeHandler}>
           x
         </h2>
       </div>
