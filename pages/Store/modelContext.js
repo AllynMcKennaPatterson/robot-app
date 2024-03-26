@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect, useLayoutEffect } from "react";
+import { Vector3 } from "three";
 
 const ModelContext = createContext();
 
@@ -10,6 +11,7 @@ export function ModelContextProvider(props) {
     }
     const [modelState, setModelState] = useState(defaultModel);
     const [showTargetBlock, setShowTargetBlock] = useState(false);
+    const [targetBlockPos, setTargetBlockPos] = useState(new Vector3(0,0,0))
 
     function editModelState(command) {
         if (command.joint === "joint1") {
@@ -30,7 +32,7 @@ export function ModelContextProvider(props) {
         if (command.joint === "base") {
             setModelState((previousState) => {
                 const newState = JSON.parse(JSON.stringify(previousState))
-                console.log("NewState" + newState.baseRotation)
+                // console.log("NewState" + newState.baseRotation)
                 newState.baseRotation = [0, command.angle, 0]
                 return newState;
             })
@@ -42,6 +44,19 @@ export function ModelContextProvider(props) {
         console.log(showTargetBlock);
     }
 
+    function setTargetBlockPosition(position) {
+        console.log("Pos: " + JSON.stringify(position))
+        setTargetBlockPos((previousState) => {
+            console.log("prev: " + JSON.stringify(previousState))
+            let newState = JSON.parse(JSON.stringify(previousState))
+            console.log("newstate: " + JSON.stringify(newState))
+            newState = position
+            return newState;
+        })
+        
+        console.log("TBP from Ctx: " + JSON.stringify(targetBlockPos))
+    }
+
     function hideTargetBlock(){
         setShowTargetBlock(false);
     }
@@ -51,6 +66,7 @@ export function ModelContextProvider(props) {
         targetBlock: showTargetBlock,
         updateModelState: editModelState,
         toggleTargetBlock: toggleTargetBlock,
+        setTargetBlockPosition: setTargetBlockPosition,
         hideTargetBlock: hideTargetBlock,
     };
     return (
