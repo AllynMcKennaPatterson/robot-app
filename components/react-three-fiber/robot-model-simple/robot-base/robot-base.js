@@ -1,6 +1,5 @@
 import ModelContext from "@/pages/Store/modelContext";
-import { useFrame } from "@react-three/fiber";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef} from "react";
 
 function RobotBase(props) {
   const ref = useRef();
