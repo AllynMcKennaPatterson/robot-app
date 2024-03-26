@@ -64,6 +64,7 @@ export default function HomePage() {
           <VirtualObjectModal
             open={openObjectModal}
             onClose={() => setOpenObjectModal(false)}
+            setOpenObjectModal={() => setOpenObjectModal(!openObjectModal)}
           />
           <DelayModal
             open={openDelayModal}
