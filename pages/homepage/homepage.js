@@ -20,7 +20,6 @@ export default function HomePage() {
   const [openDelayModal, setOpenDelayModal] = useState(false);
   const [openObjectModal, setOpenObjectModal] = useState(false);
 
-
   return (
     <div>
       <Header />
@@ -35,7 +34,9 @@ export default function HomePage() {
             setOpenDelayModal={() => setOpenDelayModal(false)}
           />
           <EndEffectorControlButton
-            setOpenCoordinateModal={() => setOpenCoordinateModal(!openCoordinateModal)}
+            setOpenCoordinateModal={() =>
+              setOpenCoordinateModal(!openCoordinateModal)
+            }
             setOpenObjectModal={() => setOpenObjectModal(false)}
             setOpenSliders={() => setOpenSliders(false)}
             setOpenDelayModal={() => setOpenDelayModal(false)}
@@ -45,7 +46,7 @@ export default function HomePage() {
             setOpenObjectModal={() => setOpenObjectModal(!openObjectModal)}
             setOpenDelayModal={() => setOpenDelayModal(false)}
             setOpenCoordinateModal={() => setOpenCoordinateModal(false)}
-             />
+          />
           <DelayButton
             setOpenDelayModal={() => setOpenDelayModal(!openDelayModal)}
             setOpenObjectModal={() => setOpenObjectModal(false)}
