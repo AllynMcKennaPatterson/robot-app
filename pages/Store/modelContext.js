@@ -64,6 +64,7 @@ export function ModelContextProvider(props) {
     const context = {
         theModelData: modelState,
         targetBlock: showTargetBlock,
+        targetBlockPos: targetBlockPos,
         updateModelState: editModelState,
         toggleTargetBlock: toggleTargetBlock,
         setTargetBlockPosition: setTargetBlockPosition,
