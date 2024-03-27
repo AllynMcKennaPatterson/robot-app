@@ -12,6 +12,7 @@ function VirtualObjectButton(props) {
     props.setOpenCoordinateModal(false)
     props.setOpenDelayModal(false)
     modelState.toggleTargetBlock()
+    modelState.setTargetBlockPosition({x: 0, y:1, z:5}) 
   }
 
   return (

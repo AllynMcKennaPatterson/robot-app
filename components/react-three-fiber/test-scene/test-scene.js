@@ -39,7 +39,7 @@ function TestScene() {
           />
           <directionalLight
             position={[10, 12, -10]}
-            intensity={5}
+            intensity={4}
             castShadow
             color={"#3da0fd"}
           />
@@ -61,7 +61,7 @@ function TestScene() {
             </group>
           </group>
           {modelState.targetBlock == true ? (
-            <TestCube position={[0, 0, 0]} size={[1, 1, 1]} color={"#ff711f"} />
+            <TestCube position={[0, 0, 0]} size={[1, 1, 1]} color={"#800f03"} />
           ) : (
             <></>
           )}
