@@ -13,6 +13,7 @@ function VirtualObjectModal(props) {
 
   async function publishHandler(){
     console.log("Publishing Virtual Object")
+    console.log(modelState.targetBlockPos)
   }
 
   function closeHandler() {
@@ -31,6 +32,7 @@ function VirtualObjectModal(props) {
         </h2>
       </div>
       <div className={classes.divider}></div>
+      <div className={classes.coords}><span style={{fontWeight: "bold", marginLeft:'12px', marginRight:"4px"}}>X:</span>{modelState.targetBlockPos.x} <span style={{fontWeight: "bold", marginLeft:'12px', marginRight:"4px"}}>Y:</span>{modelState.targetBlockPos.y} <span style={{fontWeight: "bold", marginLeft:'12px', marginRight:"4px"}}>Z:</span>{modelState.targetBlockPos.z}</div>
       <div className={classes.buttonContainer} onClick={publishHandler}>
         <div className={classes.buttonContent}>
           <h3 className={classes.buttonText}>Publish</h3>
